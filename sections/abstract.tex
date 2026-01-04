@@ -1,2 +1,10 @@
 This paper presents GaitNet, ...
 
+\begin{outline}
+\begin{itemize}
+    \item Problem: Quadruped locomotion on unstructured terrain requires adapting to unpredictable environments where pre-defined gait schedules fail.
+    \item Gap: Traditional MPC struggles with the combinatorial complexity of non-gaited contact planning, while end-to-end RL lacks safety and interpretability.
+    \item Approach: We introduce GaitNet, a hybrid control framework integrating a greedy, neural network-based footstep planner with a traditional model-based controller.
+    \item Key Result: The system generates dynamic, acyclic gaits, achieving a \resBestSurvivalRate{} survival rate on challenging terrain, outperforming a single-leg baseline by over 2x.
+\end{itemize}
+\end{outline}

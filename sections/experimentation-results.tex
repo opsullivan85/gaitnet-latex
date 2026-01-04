@@ -1,3 +1,26 @@
 \section{Experimentation and Results}
 
-todo: experimentation and results
+\subsection{Experimental Setup}
+\begin{outline}
+\begin{itemize}
+    \item Simulation: NVIDIA Isaac Lab with parallel GPU simulation for learning and CPU-based MPC for control.
+    \item Terrain: Infinite strip of terrain varying in difficulty (void density \expLowestDifficulty{}-\expHighestDifficulty{}) and commanded velocity.
+\end{itemize}
+\end{outline}
+
+\subsection{Qualitative Performance}
+\begin{outline}
+\begin{itemize}
+    \item Acyclic Behavior: GaitNet generates non-periodic gaits. At high speeds, it executes simultaneous steps (up to two legs in swing), adapting dynamically without pre-defined phase offsets.
+    \item Swing Duration: The network learns to modulate swing duration, favoring 0.22-0.25s for stability but utilizing faster steps (0.125s) for recovery.
+\end{itemize}
+\end{outline}
+
+\subsection{Baseline Comparison}
+\begin{outline}
+\begin{itemize}
+    \item Baseline: A single-leg motion planner (similar to ContactNet without the GaitNet selector).
+    \item GaitNet achieves a 69.4\% mean survival rate vs. 25.6\% for the baseline
+    \item GaitNet maintains performance at higher velocities (>0.15m/s) where the baseline fails.
+\end{itemize}
+\end{outline}

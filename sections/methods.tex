@@ -1,3 +1,17 @@
 \section{Methods}
 
-todo: methods
+\subsection{System Overview}
+\begin{outline}
+The framework uses a hierarchical design where a user input $\mathbf v_{usr}$ and robot state $\mathbf x_c$ are processed to generate a footstep action $\mathbf f_a$, which is executed by a MIT Mini-Cheetah MPC controller.
+\end{outline}
+
+\subsection{GaitNet}
+\begin{outline}
+\begin{itemize}
+    \item Objective: Select the optimal action from the candidate set $\mathbf f_c$.
+    \item Input: Robot state $\mathbf x_g$ (including gravity and contact state) and one-hot encoded candidates.
+    \item Architecture: A middle-fusion network with two encoders (state and footstep) feeding a shared trunk,
+    outputting a value logit (for ranking) and a swing duration scalar $\in(0.1,0.3)$s.
+    \item Training: Trained via Proximal Policy Optimization (PPO) with a reward function balancing velocity tracking, stability, and energy efficiency.
+\end{itemize}
+\end{outline}

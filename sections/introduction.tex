@@ -1,3 +1,23 @@
 \section{Introduction}
 
-todo: introduction
+\subsection{Motivation}
+\begin{outline}
+    Legged robots need to traverse uneven, unstructured terrains (disaster zones, rocky landscapes) where periodic gaits are insufficient.
+\end{outline}
+
+\subsection{Related Work}
+\begin{outline}
+\begin{itemize}
+    \item Optimization-based Planning: Discusses mixed-integer programming and MCTS methods, noting their high computational cost.
+    \item Hybrid Architectures: Reviews methods separating high-level planning (RL) from low-level control (MPC).
+    \item Learning-based Footstep Planners: Contrast with ContactNet and DeepLoco, emphasizing GaitNet's ability to handle multi-leg, non-gaited motion.
+    \item Limitations of Prior Work...
+\end{itemize}
+\end{outline}
+
+\subsection{Contributions}
+\begin{itemize}
+    \item A novel greedy footstep planner (GaitNet) that ranks discrete candidates for continuous execution.
+    \item A hierarchical architecture combining supervised learning for cost estimation and PPO for gait selection.
+    \item Empirical evidence that removing pre-computed heuristic costs improves policy performance (\resBestSurvivalRate{} survival)
+\end{itemize}
