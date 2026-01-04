@@ -1,0 +1,67 @@
+% packages needed for this code
+\usepackage{caption}
+\usepackage{etoolbox}
+\usepackage{comment}
+\usepackage[most]{tcolorbox}
+
+% Something specific to IEEE format
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% setup captions
+\captionsetup{
+  font={small,color=blue},
+  labelfont={small,color=blue}
+}
+
+% un-numbered footnote
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% toggle for outlines
+\newtoggle{outline_toggle}
+\toggletrue{outline_toggle}  % Enable
+\togglefalse{outline_toggle}  % Disable
+
+% toggle for todo blocks
+\newtoggle{todo_toggle}
+\toggletrue{todo_toggle}  % Enable
+\togglefalse{todo_toggle} % Disable
+
+% todo/outline code
+\newtcolorbox{emphasis}{
+  colback=gray!10, colframe=gray!50, boxrule=0.5pt, arc=4pt, left=4pt,
+right=4pt, top=4pt, bottom=4pt }
+
+\newtcolorbox{todo_box}{
+  colback=yellow!20, colframe=yellow!70, boxrule=0.5pt, arc=4pt,
+left=4pt, right=4pt, top=4pt, bottom=4pt }
+
+\iftoggle{todo_toggle}{
+  \newlength{\todoshift}%
+  \setlength{\todoshift}{2cm} % change this to control how far into
+  % the margin it sticks
+  \newenvironment{todo}
+  {%
+    \begin{adjustwidth}{-\todoshift}{0pt}%
+      \begin{todo_box}\noindent\textbf{TODO:}\quad
+      } {%
+      \end{todo_box}
+    \end{adjustwidth}\par
+} }{
+  \excludecomment{todo}
+}
+
+\iftoggle{outline_toggle}{
+  \newenvironment{outline}
+  {
+  \begin{emphasis}\noindent\textbf{Outline:}}
+    {
+  \end{emphasis}\par}
+}{
+  \excludecomment{outline}
+}
